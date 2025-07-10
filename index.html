@@ -69,21 +69,34 @@
             background-color: #000000; /* Слегка темнее фон для этой секции */
         }
 
-        .parallax-image {
-            position: absolute;
-            top: 50%; /* Центрируем по вертикали */
-            left: -200px; /* Сдвигаем влево, чтобы "выглядывало" */
-            transform: translateY(-50%); /* Точное центрирование по вертикали */
-            width: 1000px; /* Размер изображения */
-            height: 1000px; /* Размер изображения */
-            background-image: url('img/foto.JPG'); /* Путь к вашему фоновому изображению */
-            background-size: cover; /* Изображение будет покрывать всю область */
-            background-position: center center; /* Центрируем изображение */
-            background-attachment: fixed; /* Изображение прокручивается вместе со страницей */
-            z-index: 1; /* Убедимся, что оно позади основного контента */
-            border-radius: 10px; /* Немного скруглим углы */
-            height: 500px
-        }
+        .parallax-section {
+    position: relative; /* Важно, если внутри есть абсолютно позиционированный контент */
+    width: 100%; /* Занимает всю ширину */
+    height: 500px; /* Элемент должен иметь фиксированную высоту, чтобы фон был виден */
+    background-image: url('img/foto.JPG');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* Это ключевое свойство для простого параллакса */
+    /* Уберите здесь position: absolute; и related properties like top, left, transform */
+}
+
+/* Стили для контента, который будет поверх параллакса */
+.content-overlay {
+    position: absolute; /* Позиционируем контент поверх изображения */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 2; /* Убедитесь, что контент поверх изображения */
+    background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный фон для читаемости */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Если вы хотите, чтобы изображение было шире, чем секция, и "выглядывало" */
+/* То это нужно делать для самого изображения внутри секции, а не для фона секции */
+/* Или использовать JavaScript для более сложного эффекта */
 
         /* Чтобы текст на этой секции был поверх изображения */
         .parallax-text {
